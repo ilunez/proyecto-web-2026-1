@@ -75,36 +75,36 @@
             --badge-text: #111111;
         }
 
-        /* TEMA CYBERPUNK */
+        /* TEMA ARCADE RETRO */
         [data-theme="cyber"] {
-            --primary: #0a0a0f;
-            --secondary: #0d0d12;
-            --accent: #00ff41;
-            --accent-alt: #ffd700;
-            --text-light: #00ff41;
-            --text-muted: #4a9960;
-            --border-color: #1a3a1a;
-            --success: #00ff41;
-            --danger: #ff3131;
-            --bg-body: #0a0a0f;
-            --header-bg: rgba(8, 8, 12, 0.98);
-            --card-bg: #0d0d12;
-            --modal-bg: #0d0d12;
-            --input-bg: #0d0d12;
-            --input-focus-bg: #111118;
+            --primary: #0d0e15;
+            --secondary: #13141f;
+            --accent: #ff2d78;
+            --accent-alt: #00e5ff;
+            --text-light: #ffffff;
+            --text-muted: #7c8db8;
+            --border-color: #1e2140;
+            --success: #00e5ff;
+            --danger: #ff2d78;
+            --bg-body: #0d0e15;
+            --header-bg: rgba(13, 14, 21, 0.98);
+            --card-bg: #13141f;
+            --modal-bg: #13141f;
+            --input-bg: #13141f;
+            --input-focus-bg: #1a1b2a;
             --font-family: 'Courier New', 'Lucida Console', monospace;
             --scanline: repeating-linear-gradient(
                 0deg,
                 transparent,
                 transparent 2px,
-                rgba(0, 255, 65, 0.015) 2px,
-                rgba(0, 255, 65, 0.015) 4px
+                rgba(255, 45, 120, 0.01) 2px,
+                rgba(255, 45, 120, 0.01) 4px
             );
-            --glow: 0 0 8px rgba(0, 255, 65, 0.4);
-            --glow-strong: 0 0 16px rgba(0, 255, 65, 0.6), 0 0 32px rgba(0, 255, 65, 0.2);
-            --thumbnail-bg: linear-gradient(135deg, #0d1a0d 0%, #0a120a 100%);
-            --btn-text: #000000;
-            --badge-text: #000000;
+            --glow: 0 0 8px rgba(255, 45, 120, 0.5);
+            --glow-strong: 0 0 16px rgba(255, 45, 120, 0.6), 0 0 32px rgba(0, 229, 255, 0.3);
+            --thumbnail-bg: linear-gradient(135deg, #1a0d1f 0%, #0d1020 100%);
+            --btn-text: #ffffff;
+            --badge-text: #ffffff;
         }
 
         body {
@@ -126,47 +126,69 @@
             z-index: 9999;
         }
 
-        /* Efectos cyberpunk en elementos clave */
+        /* Efectos Arcade Retro en elementos clave */
         [data-theme="cyber"] header {
-            border-bottom-color: #00ff41;
-            box-shadow: 0 0 20px rgba(0,255,65,0.15);
+            border-bottom: 1px solid transparent;
+            background: linear-gradient(rgba(13, 14, 21, 0.98), rgba(13, 14, 21, 0.98)) padding-box,
+                        linear-gradient(90deg, #ff2d78, #00e5ff) border-box;
+            box-shadow: 0 0 24px rgba(255, 45, 120, 0.12), 0 0 48px rgba(0, 229, 255, 0.06);
         }
 
         [data-theme="cyber"] .logo span {
-            text-shadow: var(--glow);
+            background: linear-gradient(135deg, #ff2d78, #00e5ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         [data-theme="cyber"] .hero h1 {
-            text-shadow: var(--glow-strong);
+            background: linear-gradient(135deg, #ffffff 20%, #00e5ff 60%, #ff2d78 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             letter-spacing: 2px;
         }
 
         [data-theme="cyber"] .game-card:hover {
-            border-color: var(--accent);
-            box-shadow: var(--glow-strong);
+            border: 1px solid transparent;
+            background: linear-gradient(#13141f, #13141f) padding-box,
+                        linear-gradient(135deg, #ff2d78, #00e5ff) border-box;
+            box-shadow: 0 8px 32px rgba(255, 45, 120, 0.2), 0 0 48px rgba(0, 229, 255, 0.08);
         }
 
         [data-theme="cyber"] .btn-primary {
-            box-shadow: var(--glow);
+            background: linear-gradient(135deg, #ff2d78, #00e5ff) !important;
+            color: #ffffff !important;
+            box-shadow: 0 0 12px rgba(255, 45, 120, 0.45);
             letter-spacing: 1px;
         }
 
         [data-theme="cyber"] .btn-primary:hover {
-            box-shadow: var(--glow-strong);
+            background: linear-gradient(135deg, #ff2d78, #00e5ff) !important;
+            box-shadow: 0 0 20px rgba(255, 45, 120, 0.6), 0 0 40px rgba(0, 229, 255, 0.3);
+            transform: translateY(-2px);
         }
 
         [data-theme="cyber"] .play-btn {
-            box-shadow: 0 0 6px rgba(0,255,65,0.3);
+            background: linear-gradient(135deg, #ff2d78, #00e5ff) !important;
+            color: #ffffff !important;
+            box-shadow: 0 0 8px rgba(255, 45, 120, 0.4);
+        }
+
+        [data-theme="cyber"] .play-btn:hover {
+            background: linear-gradient(135deg, #ff2d78, #00e5ff) !important;
+            box-shadow: 0 0 16px rgba(255, 45, 120, 0.6), 0 0 32px rgba(0, 229, 255, 0.3);
         }
 
         [data-theme="cyber"] .game-rating {
             color: var(--accent-alt);
-            text-shadow: 0 0 6px rgba(255,215,0,0.5);
+            text-shadow: 0 0 8px rgba(0, 229, 255, 0.6);
         }
 
         [data-theme="cyber"] .coming-soon-badge {
-            background: var(--accent-alt);
-            color: #000;
+            background: linear-gradient(135deg, #ff2d78, #00e5ff);
+            color: #fff;
+            font-weight: 800;
         }
 
         /* SELECTOR DE TEMA */
@@ -194,7 +216,8 @@
         }
 
         [data-theme="cyber"] .theme-trigger {
-            box-shadow: 0 0 6px rgba(0,255,65,0.2);
+            box-shadow: 0 0 8px rgba(255, 45, 120, 0.3);
+            border-color: #2a1a2e;
         }
 
         /* Dropdown de temas: colores FIJOS, nunca heredan el tema activo */
@@ -1836,8 +1859,9 @@
         }
 
         [data-theme="cyber"] .admin-bar {
-            border-bottom: 1px solid var(--accent);
-            box-shadow: 0 0 10px rgba(0,255,65,0.15);
+            background: linear-gradient(90deg, #1a0d14, #13141f, #0d1a25) !important;
+            border-bottom: 1px solid transparent;
+            box-shadow: 0 2px 16px rgba(255, 45, 120, 0.2), 0 0 32px rgba(0, 229, 255, 0.1);
         }
 
         /* Admin game row en dark/cyber */
@@ -1863,13 +1887,14 @@
 
         [data-theme="cyber"] .btn-secondary {
             background: transparent;
-            color: var(--accent);
-            border-color: var(--accent);
+            color: var(--accent-alt);
+            border-color: var(--accent-alt);
         }
 
         [data-theme="cyber"] .btn-secondary:hover {
-            background: var(--accent);
-            color: #000;
+            background: linear-gradient(135deg, #ff2d78, #00e5ff);
+            color: #fff;
+            border-color: transparent;
         }
 
         /* Cat dropdown en dark/cyber */
@@ -1878,9 +1903,16 @@
             color: var(--text-light);
         }
 
+        [data-theme="cyber"] .cat-dropdown-trigger:hover,
+        [data-theme="cyber"] .cat-dropdown-trigger.open {
+            background: #1a1b2a;
+            border-color: #ff2d78;
+        }
+
         [data-theme="cyber"] .cat-dropdown-menu {
-            border-color: var(--accent);
-            box-shadow: 0 0 12px rgba(0,255,65,0.2);
+            background: #13141f;
+            border: 1px solid #ff2d78;
+            box-shadow: 0 0 16px rgba(255, 45, 120, 0.2), 0 8px 24px rgba(13, 14, 21, 0.9);
         }
 
         [data-theme="cyber"] .cat-dropdown-item {
@@ -1888,12 +1920,12 @@
         }
 
         [data-theme="cyber"] .cat-dropdown-item:hover {
-            background: #0d1a0d;
+            background: #1a1b2a;
         }
 
         [data-theme="cyber"] .cat-dropdown-item.active {
-            background: var(--accent);
-            color: #000;
+            background: linear-gradient(135deg, #ff2d78, #00e5ff);
+            color: #fff;
         }
 
         /* Modal en dark/cyber */
@@ -1915,23 +1947,23 @@
 
         /* Player bar en dark/cyber ya es oscuro, no hace falta ajuste */
 
-        /* Admin status banners ajustados en cyber */
+        /* Admin status banners ajustados en cyber (Arcade Retro) */
         [data-theme="cyber"] .admin-status-banner.info {
-            background: #0a1a0a;
-            color: #7fff7f;
-            border-color: #1a3a1a;
+            background: #0d0e1a;
+            color: #00e5ff;
+            border-color: rgba(0, 229, 255, 0.3);
         }
 
         [data-theme="cyber"] .admin-status-banner.success {
-            background: #0a1a0a;
-            color: var(--accent);
-            border-color: var(--accent);
+            background: #0d1220;
+            color: #00e5ff;
+            border-color: rgba(0, 229, 255, 0.5);
         }
 
         [data-theme="cyber"] .admin-status-banner.error {
-            background: #1a0a0a;
-            color: #ff5555;
-            border-color: #3a1a1a;
+            background: #1a0d14;
+            color: #ff2d78;
+            border-color: rgba(255, 45, 120, 0.4);
         }
 
         /* Game category badge en dark/cyber */
@@ -1941,15 +1973,16 @@
         }
 
         [data-theme="cyber"] .game-category {
-            background: #0d1a0d;
-            color: var(--accent);
-            border: 1px solid #1a3a1a;
+            background: linear-gradient(135deg, rgba(255, 45, 120, 0.08), rgba(0, 229, 255, 0.08));
+            color: var(--accent-alt);
+            border: 1px solid rgba(0, 229, 255, 0.25);
         }
 
-        /* Footer links en cyber */
+        /* Footer en cyber (Arcade Retro) */
         [data-theme="cyber"] footer {
-            background: #070710;
-            border-top-color: var(--accent);
+            background: #0a0b14;
+            border-top-color: #ff2d78;
+            box-shadow: inset 0 1px 0 rgba(0, 229, 255, 0.15);
         }
 
         /* HAMBURGER MENU MÓVIL */
@@ -2228,8 +2261,8 @@
                             <span style="color:inherit;">Oscuro</span>
                         </button>
                         <button class="theme-option" data-theme="cyber" onclick="setTheme('cyber')">
-                            <span class="theme-swatch" style="background:#0a0a0f;border:2px solid #00ff41;box-shadow:0 0 4px #00ff41;flex-shrink:0;"></span>
-                            <span style="color:inherit;">Cyberpunk</span>
+                            <span class="theme-swatch" style="background:linear-gradient(135deg,#ff2d78,#00e5ff);border:none;flex-shrink:0;"></span>
+                            <span style="color:inherit;">Arcade Retro</span>
                         </button>
                     </div>
                 </div>
