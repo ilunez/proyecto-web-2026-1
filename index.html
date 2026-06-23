@@ -372,30 +372,16 @@
 
         .nav-mobile-overlay.open { display: block; }
 
-        /* HAMBURGER MENU (mobile) */
-        .hamburger {
+        /* HEADER MOBILE CONTROLS - Selector de tema visible en navbar móvil */
+        .header-mobile-controls {
             display: none;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-            padding: 6px;
-            background: none;
-            border: none;
-            color: var(--text-light);
+            gap: 0.5rem;
+            align-items: center;
         }
 
-        .hamburger span {
-            display: block;
-            width: 22px;
-            height: 2px;
-            background: currentColor;
-            border-radius: 2px;
-            transition: all 0.25s;
+        .header-mobile-controls.visible {
+            display: flex;
         }
-
-        .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-        .hamburger.open span:nth-child(2) { opacity: 0; }
-        .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
         /* MAIN CONTENT */
         main {
@@ -999,2503 +985,483 @@
             font-size: 1.1rem;
         }
 
-        .player-status p {
-            max-width: 420px;
-            font-size: 0.9rem;
-            line-height: 1.5;
-        }
-
-        /* FORM (no usado actualmente, se conserva por si se agrega un formulario de contacto u otro) */
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: var(--text-light);
-        }
-
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 0.8rem;
-            background: var(--input-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            color: var(--text-light);
-            font-size: 0.9rem;
-            font-family: inherit;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: var(--accent);
-            background: var(--input-focus-bg);
-            box-shadow: var(--glow);
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
-
-        /* ADMIN TRIGGER DISCRETO */
-        .admin-trigger {
-            width: 22px;
-            height: 22px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            cursor: default;
-            user-select: none;
-        }
-
-        .admin-trigger::after {
-            content: '';
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: var(--border-color);
-            transition: width 0.2s, height 0.2s, background 0.2s;
-        }
-
-        .admin-trigger.revealed::after {
-            width: 5px;
-            height: 5px;
-            background: var(--text-muted);
-            cursor: pointer;
-        }
-
-        .admin-trigger.revealed {
-            cursor: pointer;
-        }
-
-        /* ADMIN LOGIN MODAL */
-        .admin-login-content {
-            max-width: 360px;
-        }
-
-        .admin-login-content h2 {
-            text-align: center;
-        }
-
-        .admin-error {
-            color: var(--danger);
-            font-size: 0.85rem;
-            margin-top: 0.5rem;
-            display: none;
-            text-align: center;
-        }
-
-        .admin-error.visible {
-            display: block;
-        }
-
-        /* ADMIN PANEL (pantalla completa) */
-        .admin-panel {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: var(--secondary);
-            z-index: 4000;
-            flex-direction: column;
-            overflow-y: auto;
-        }
-
-        .admin-panel.active {
-            display: flex;
-        }
-
-        .admin-bar {
-            position: sticky;
-            top: 0;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 1rem 1.5rem;
-            background: var(--accent);
-            color: white;
-            z-index: 10;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-        }
-
-        .admin-bar h2 {
-            font-size: 1.1rem;
-            font-weight: 700;
-        }
-
-        .admin-bar-actions {
-            display: flex;
-            gap: 0.6rem;
-            flex-wrap: wrap;
-        }
-
-        .admin-btn {
-            background: rgba(255, 255, 255, 0.12);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            color: white;
-            padding: 0.5rem 0.9rem;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 0.82rem;
-            transition: background 0.2s;
-        }
-
-        .admin-btn:hover {
-            background: rgba(255, 255, 255, 0.22);
-        }
-
-        .admin-btn.exit {
-            background: rgba(239, 68, 68, 0.18);
-            border-color: rgba(239, 68, 68, 0.4);
-        }
-
-        .admin-btn.exit:hover {
-            background: rgba(239, 68, 68, 0.3);
-        }
-
-        .admin-content {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 2rem 1.5rem;
-            width: 100%;
-        }
-
-        .admin-status-banner {
-            padding: 0.8rem 1rem;
-            border-radius: 6px;
-            font-size: 0.85rem;
-            margin-bottom: 1.5rem;
-            display: none;
-            align-items: center;
-            gap: 0.6rem;
-        }
-
-        .admin-status-banner.visible {
-            display: flex;
-        }
-
-        .admin-status-banner.info {
-            background: #e8f0fe;
-            color: #1a4ba8;
-            border: 1px solid #c3d8f7;
-        }
-
-        .admin-status-banner.success {
-            background: #e7f9f1;
-            color: #0a7a4f;
-            border: 1px solid #b9ecd6;
-        }
-
-        .admin-status-banner.error {
-            background: #fdeeee;
-            color: #b91c1c;
-            border: 1px solid #f6c8c8;
-        }
-
-        .admin-section-title {
-            font-size: 1rem;
-            font-weight: 700;
-            margin: 2rem 0 1rem;
-            color: var(--text-light);
-        }
-
-        .admin-section-title:first-child {
-            margin-top: 0;
-        }
-
-        /* token gate */
-        .admin-token-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .admin-token-card p {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            margin-bottom: 1rem;
-            line-height: 1.5;
-        }
-
-        .admin-token-row {
-            display: flex;
-            gap: 0.6rem;
-            flex-wrap: wrap;
-        }
-
-        .admin-token-row input {
-            flex: 1;
-            min-width: 220px;
-        }
-
-        /* lista de juegos admin */
-        .admin-game-list {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .admin-game-row {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 1.2rem;
-            display: flex;
-            gap: 1rem;
-            align-items: flex-start;
-            flex-wrap: wrap;
-        }
-
-        .admin-game-row.unpublished {
-            opacity: 0.65;
-            border-style: dashed;
-        }
-
-        .admin-game-thumb {
-            width: 60px;
-            height: 60px;
-            border-radius: 6px;
-            background: var(--secondary);
-            border: 1px solid var(--border-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            flex-shrink: 0;
-            overflow: hidden;
-        }
-
-        .admin-game-thumb img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .admin-game-main {
-            flex: 1;
-            min-width: 240px;
-        }
-
-        .admin-game-main h4 {
-            font-size: 0.95rem;
-            margin-bottom: 0.2rem;
-        }
-
-        .admin-game-main .admin-game-meta {
-            font-size: 0.78rem;
-            color: var(--text-muted);
-        }
-
-        .admin-game-tag {
-            display: inline-block;
-            font-size: 0.7rem;
-            font-weight: 700;
-            padding: 0.15rem 0.5rem;
-            border-radius: 4px;
-            margin-left: 0.4rem;
-        }
-
-        .admin-game-tag.published {
-            background: #e7f9f1;
-            color: #0a7a4f;
-        }
-
-        .admin-game-tag.unpublished {
-            background: #f1f1f1;
-            color: var(--text-muted);
-        }
-
-        .admin-game-actions {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-        }
-
-        .admin-icon-btn {
-            border: 1px solid var(--border-color);
-            background: var(--secondary);
-            color: var(--text-light);
-            padding: 0.45rem 0.7rem;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 0.78rem;
-            font-weight: 600;
-            transition: all 0.2s;
-            white-space: nowrap;
-        }
-
-        .admin-icon-btn:hover {
-            background: var(--accent);
-            color: white;
-            border-color: var(--accent);
-        }
-
-        .admin-icon-btn.danger:hover {
-            background: var(--danger);
-            border-color: var(--danger);
-        }
-
-        .admin-icon-btn.toggle-on {
-            background: #e7f9f1;
-            border-color: #b9ecd6;
-            color: #0a7a4f;
-        }
-
-        .admin-icon-btn.toggle-off {
-            background: #f1f1f1;
-            color: var(--text-muted);
-        }
-
-        /* formulario de edición / creación */
-        .admin-form-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 1.5rem;
-        }
-
-        .admin-form-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-        }
-
-        .admin-form-grid .span-2 {
-            grid-column: span 2;
-        }
-
-        .admin-form-hint {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            margin-top: 0.3rem;
-            line-height: 1.4;
-        }
-
-        .admin-cover-options {
-            display: flex;
-            gap: 1.5rem;
-            margin-bottom: 0.6rem;
-            font-size: 0.85rem;
-        }
-
-        .admin-cover-options label {
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-            font-weight: 500;
-            cursor: pointer;
-        }
-
-        .admin-form-actions {
-            margin-top: 1.2rem;
-            display: flex;
-            gap: 0.8rem;
-        }
-
-        /* CATEGORÍAS EN ADMIN */
-        .admin-cat-tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            padding: 0.35rem 0.7rem;
-            border-radius: 6px;
-            font-size: 0.82rem;
-            font-weight: 600;
-            border: 1px solid var(--border-color);
-            background: var(--secondary);
-            color: var(--text-light);
-        }
-
-        .admin-cat-tag.inactive {
-            opacity: 0.45;
-            text-decoration: line-through;
-        }
-
-        .admin-cat-name {
-            cursor: text;
-            outline: none;
-            min-width: 30px;
-        }
-
-        .admin-cat-name:focus {
-            background: white;
-            padding: 0 3px;
-            border-radius: 3px;
-        }
-
-        .admin-cat-btn {
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 0.8rem;
-            line-height: 1;
-            padding: 0 2px;
-            color: var(--text-muted);
-            transition: color 0.15s;
-        }
-
-        .admin-cat-btn:hover { color: var(--danger); }
-        .admin-cat-btn.toggle:hover { color: var(--success); }
-
-        @media (max-width: 640px) {
-            .admin-form-grid {
-                grid-template-columns: 1fr;
-            }
-            .admin-form-grid .span-2 {
-                grid-column: span 1;
-            }
-            .admin-game-row {
-                flex-direction: column;
-            }
-            .admin-game-actions {
-                width: 100%;
-            }
-            .admin-icon-btn {
-                flex: 1;
-            }
-        }
-
-        /* FOOTER */
-        footer {
-            background: var(--secondary);
-            border-top: 1px solid var(--border-color);
-            padding: 2rem;
-            text-align: center;
-            color: var(--text-muted);
-            margin-top: 4rem;
-        }
-
-        .footer-content {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .footer-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .footer-links a:hover {
-            color: var(--text-light);
-        }
-
-        /* RESPONSIVE */
-        /* TABLET (768px a 1024px) */
-        @media (max-width: 1024px) {
-            .games-grid {
-                grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-                gap: 1.2rem;
-            }
-
-            main {
-                margin-top: 100px;
-                padding: 1.5rem;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
+        /* RESPONSIVE - BREAKPOINTS CRÍTICOS */
+
+        /* Tablet y menores */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
             }
 
             nav {
-                gap: 1.5rem;
+                display: none;
             }
 
-            nav a {
-                font-size: 0.85rem;
+            nav.open {
+                display: flex;
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: var(--header-bg);
+                border-bottom: 1px solid var(--border-color);
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem 1.5rem;
+                z-index: 999;
+            }
+
+            .header-mobile-controls {
+                display: flex;
+            }
+
+            .header-mobile-controls.hidden {
+                display: none;
             }
         }
 
-        /* MOBILE (max-width: 768px) */
-        @media (max-width: 768px) {
+        /* Mobile pequeño */
+        @media (max-width: 480px) {
             header {
-                padding: 0.7rem 1rem;
+                padding: 0.8rem 1rem;
             }
 
             .header-content {
-                flex-wrap: nowrap;
-                gap: 0.6rem;
+                gap: 0.5rem;
             }
 
             .logo {
                 font-size: 1rem;
-                flex: 1;
+                gap: 0.3rem;
             }
 
             .logo-icon {
                 font-size: 1.4rem;
             }
 
-            .hamburger {
-                display: flex;
-                order: 2;
-                flex-shrink: 0;
-            }
-
-            nav {
-                position: fixed;
-                top: 0;
-                right: -260px;
-                width: 240px;
-                height: 100vh;
-                background: var(--modal-bg);
-                border-left: 1px solid var(--border-color);
-                z-index: 999;
-                flex-direction: column;
-                gap: 0;
-                padding: 1.5rem 0;
-                transition: right 0.3s ease;
-                order: 3;
-                box-shadow: -4px 0 16px rgba(0,0,0,0.12);
-            }
-
-            nav.open {
-                right: 0;
-            }
-
-            nav a {
-                font-size: 0.95rem;
-                padding: 0.9rem 1.5rem;
-                border-bottom: 1px solid var(--border-color);
-                width: 100%;
-            }
-
-            .theme-selector-wrap {
-                padding: 0.9rem 1.5rem;
-                border-bottom: 1px solid var(--border-color);
-                width: 100%;
-            }
-
-            .theme-menu {
-                position: static;
-                box-shadow: none;
-                border: 1px solid #333;
-                border-radius: 6px;
-                margin-top: 0.5rem;
-                width: 100%;
-            }
-
-            .admin-trigger {
-                padding: 0.9rem 1.5rem;
-            }
-
-            main {
-                margin-top: 58px;
-                padding: 1rem;
-            }
-
-            .hero {
-                padding: 2rem 1rem;
-                margin-bottom: 2rem;
-            }
-
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-
-            .hero p {
-                font-size: 0.95rem;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-                gap: 0.8rem;
-            }
-
-            .btn {
-                width: 100%;
-                padding: 0.7rem 1.5rem;
-            }
-
-            .games-grid {
-                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-                gap: 1rem;
-                margin-bottom: 2rem;
-            }
-
-            .game-card {
-                border-radius: 6px;
-            }
-
-            .game-thumbnail {
-                height: 120px;
-                font-size: 2rem;
-            }
-
-            .game-info {
-                padding: 0.8rem;
-            }
-
-            .game-title {
-                font-size: 0.9rem;
-            }
-
-            .game-category {
-                font-size: 0.7rem;
-                padding: 0.2rem 0.5rem;
-            }
-
-            .game-description {
-                font-size: 0.8rem;
-                margin-bottom: 0.5rem;
-            }
-
-            .game-footer {
-                gap: 0.5rem;
-            }
-
-            .game-rating {
-                font-size: 0.8rem;
-            }
-
-            .play-btn {
-                padding: 0.4rem 0.7rem;
-                font-size: 0.75rem;
-            }
-
-            .filters {
-                gap: 0.8rem;
-                margin-bottom: 1.5rem;
-            }
-
-
-            .search-box {
-                min-width: 100%;
-                padding: 0.7rem 0.9rem;
-                font-size: 0.9rem;
-            }
-
-            .modal-content {
-                padding: 1.5rem;
-                border-radius: 6px;
-                width: 95%;
-            }
-
-            .modal h2 {
-                font-size: 1.2rem;
-                margin-bottom: 1rem;
-            }
-
-            .form-group {
-                margin-bottom: 1rem;
-            }
-
-            .form-group label {
-                font-size: 0.9rem;
-            }
-
-            .form-group input,
-            .form-group textarea,
-            .form-group select {
-                padding: 0.7rem;
-                font-size: 0.9rem;
-            }
-
-            .player-bar {
-                padding: 0.6rem 0.8rem;
-            }
-
-            .player-title {
-                font-size: 0.85rem;
-            }
-
-            .player-back-btn,
-            .player-fullscreen-btn {
-                padding: 0.45rem 0.7rem;
-                font-size: 0.78rem;
-            }
-
-            footer {
-                padding: 1.5rem;
-                margin-top: 2rem;
-            }
-
-            .footer-links {
-                gap: 1rem;
-                font-size: 0.9rem;
-            }
-        }
-
-        /* SMALL MOBILE (max-width: 480px) */
-        @media (max-width: 480px) {
-            header {
-                padding: 0.6rem 0.8rem;
-                position: relative;
-            }
-
-            .logo {
-                font-size: 0.95rem;
-            }
-
-            .logo-icon {
-                font-size: 1.3rem;
-            }
-
-            nav {
-                gap: 0.8rem;
-            }
-
-            nav a {
-                font-size: 0.75rem;
-            }
-
-            main {
-                margin-top: 100px;
-                padding: 0.8rem;
-            }
-
-            .hero {
-                padding: 1.5rem 0.8rem;
-                margin-bottom: 1.5rem;
-            }
-
-            .hero h1 {
-                font-size: 1.5rem;
-                margin-bottom: 0.5rem;
-            }
-
-            .hero p {
-                font-size: 0.9rem;
-                margin-bottom: 1rem;
-            }
-
-            .games-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 0.8rem;
-                margin-bottom: 1.5rem;
-            }
-
-            .game-thumbnail {
-                height: 100px;
-                font-size: 1.5rem;
-            }
-
-            .game-info {
-                padding: 0.6rem;
-            }
-
-            .game-title {
-                font-size: 0.85rem;
-            }
-
-            .game-category {
-                font-size: 0.65rem;
-            }
-
-            .game-description {
-                font-size: 0.75rem;
-                line-height: 1.3;
-            }
-
-            .btn {
-                padding: 0.6rem 1.2rem;
-                font-size: 0.85rem;
-            }
-
-
-            .search-box {
-                padding: 0.6rem 0.8rem;
-                font-size: 0.85rem;
-            }
-
-            .modal-content {
-                padding: 1.2rem;
-                width: 98%;
-            }
-
-            .modal h2 {
-                font-size: 1.1rem;
-            }
-        }
-
-        /* LOADING */
-        .loading {
-            text-align: center;
-            padding: 2rem;
-            color: var(--text-muted);
-        }
-
-        .spinner {
-            border: 3px solid var(--border-color);
-            border-top: 3px solid var(--accent);
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 1rem;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* =============================================
-           FIXES DE CONTRASTE POR TEMA
-           ============================================= */
-
-        /* Admin bar: fondo negro fijo → adaptado */
-        [data-theme="dark"] .admin-bar,
-        [data-theme="cyber"] .admin-bar {
-            background: #111;
-        }
-
-        [data-theme="cyber"] .admin-bar {
-            background: linear-gradient(90deg, #1a0d14, #13141f, #0d1a25) !important;
-            border-bottom: 1px solid transparent;
-            box-shadow: 0 2px 16px rgba(255, 45, 120, 0.2), 0 0 32px rgba(0, 229, 255, 0.1);
-        }
-
-        /* Admin game row en dark/cyber */
-        [data-theme="dark"] .admin-game-row,
-        [data-theme="cyber"] .admin-game-row {
-            background: var(--card-bg);
-            border-color: var(--border-color);
-        }
-
-        [data-theme="dark"] .admin-icon-btn,
-        [data-theme="cyber"] .admin-icon-btn {
-            background: var(--secondary);
-            border-color: var(--border-color);
-            color: var(--text-light);
-        }
-
-        /* Botones secundarios: borde y texto adaptados */
-        [data-theme="dark"] .btn-secondary {
-            background: var(--secondary);
-            color: var(--text-light);
-            border-color: var(--accent);
-        }
-
-        [data-theme="cyber"] .btn-secondary {
-            background: transparent;
-            color: var(--accent-alt);
-            border-color: var(--accent-alt);
-        }
-
-        [data-theme="cyber"] .btn-secondary:hover {
-            background: linear-gradient(135deg, #ff2d78, #00e5ff);
-            color: #fff;
-            border-color: transparent;
-        }
-
-        /* Cat dropdown en dark/cyber */
-        [data-theme="dark"] .cat-dropdown-trigger,
-        [data-theme="cyber"] .cat-dropdown-trigger {
-            color: var(--text-light);
-        }
-
-        [data-theme="cyber"] .cat-dropdown-trigger:hover,
-        [data-theme="cyber"] .cat-dropdown-trigger.open {
-            background: #1a1b2a;
-            border-color: #ff2d78;
-        }
-
-        [data-theme="cyber"] .cat-dropdown-menu {
-            background: #13141f;
-            border: 1px solid #ff2d78;
-            box-shadow: 0 0 16px rgba(255, 45, 120, 0.2), 0 8px 24px rgba(13, 14, 21, 0.9);
-        }
-
-        [data-theme="cyber"] .cat-dropdown-item {
-            color: var(--text-light);
-        }
-
-        [data-theme="cyber"] .cat-dropdown-item:hover {
-            background: #1a1b2a;
-        }
-
-        [data-theme="cyber"] .cat-dropdown-item.active {
-            background: linear-gradient(135deg, #ff2d78, #00e5ff);
-            color: #fff;
-        }
-
-        /* Modal en dark/cyber */
-        [data-theme="dark"] .modal-content,
-        [data-theme="cyber"] .modal-content {
-            background: var(--modal-bg);
-            color: var(--text-light);
-        }
-
-        /* Secciones about/contact en dark/cyber */
-        [data-theme="dark"] .about-section > div,
-        [data-theme="dark"] .contact-section > div,
-        [data-theme="cyber"] .about-section > div,
-        [data-theme="cyber"] .contact-section > div {
-            background: var(--card-bg);
-            border-color: var(--border-color);
-            color: var(--text-light);
-        }
-
-        /* Player bar en dark/cyber ya es oscuro, no hace falta ajuste */
-
-        /* Admin status banners ajustados en cyber (Arcade Retro) */
-        [data-theme="cyber"] .admin-status-banner.info {
-            background: #0d0e1a;
-            color: #00e5ff;
-            border-color: rgba(0, 229, 255, 0.3);
-        }
-
-        [data-theme="cyber"] .admin-status-banner.success {
-            background: #0d1220;
-            color: #00e5ff;
-            border-color: rgba(0, 229, 255, 0.5);
-        }
-
-        [data-theme="cyber"] .admin-status-banner.error {
-            background: #1a0d14;
-            color: #ff2d78;
-            border-color: rgba(255, 45, 120, 0.4);
-        }
-
-        /* Game category badge en dark/cyber */
-        [data-theme="dark"] .game-category {
-            background: #2a2a2a;
-            color: #b0b0b0;
-        }
-
-        [data-theme="cyber"] .game-category {
-            background: linear-gradient(135deg, rgba(255, 45, 120, 0.08), rgba(0, 229, 255, 0.08));
-            color: var(--accent-alt);
-            border: 1px solid rgba(0, 229, 255, 0.25);
-        }
-
-        /* Footer en cyber (Arcade Retro) */
-        [data-theme="cyber"] footer {
-            background: #0a0b14;
-            border-top-color: #ff2d78;
-            box-shadow: inset 0 1px 0 rgba(0, 229, 255, 0.15);
-        }
-
-        /* HAMBURGER MENU MÓVIL */
-        .nav-toggle {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 0;
-            color: var(--text-light);
-        }
-
-        .nav-toggle span {
-            width: 22px;
-            height: 2px;
-            background: currentColor;
-            transition: all 0.3s;
-        }
-
-        .nav-toggle.active span:nth-child(1) {
-            transform: rotate(45deg) translate(8px, 8px);
-        }
-
-        .nav-toggle.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .nav-toggle.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(8px, -8px);
-        }
-
-        /* En mobile, el nav se oculta por defecto y se muestra al hacer clic */
-        @media (max-width: 768px) {
-            .nav-toggle {
-                display: flex;
-                z-index: 101;
-            }
-
-            nav {
-                position: fixed;
-                top: 60px;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background: var(--header-bg);
-                border-bottom: none;
-                flex-direction: column;
-                gap: 0;
-                padding: 0;
-                max-height: 0;
-                overflow-y: auto;
-                overflow-x: hidden;
-                transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-                width: 100% !important;
-                order: auto !important;
-                z-index: 100;
-                opacity: 0;
-                visibility: hidden;
-            }
-
-            nav.open {
-                max-height: calc(100vh - 60px);
-                padding: 1rem;
-                opacity: 1;
-                visibility: visible;
-                border-bottom: 1px solid var(--border-color);
-            }
-
-            nav a {
-                display: block;
-                padding: 1rem 0;
-                font-size: 0.95rem;
-                color: var(--text-light);
-                border-bottom: 1px solid var(--border-color);
-                transition: all 0.2s ease;
-            }
-
-            nav a:last-child {
-                border-bottom: none;
-            }
-
-            nav a:hover {
-                padding-left: 0.5rem;
-                background: var(--secondary);
-                padding: 1rem 0 1rem 0.5rem;
-            }
-        }
-
-        /* En mobile pequeño, más compacto */
-        @media (max-width: 480px) {
-            nav {
-                padding: 0.8rem;
-            }
-
-            nav a {
-                font-size: 0.85rem;
-            }
-        }
-
-
-
-        /* TEMA SELECTOR EN HEADER MOBILE */
-        @media (max-width: 768px) {
-            #themeSelectorWrap {
-                order: 10;
-                flex-shrink: 0;
-                margin-left: auto;
+            .header-mobile-controls {
+                gap: 0.35rem;
             }
 
             .theme-trigger {
-                padding: 0.6rem 0.7rem;
-                width: 40px;
-                height: 40px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                min-width: 40px;
-                margin: 0;
+                width: 30px;
+                height: 30px;
+                font-size: 0.85rem;
             }
 
-            .theme-trigger svg {
-                width: 16px;
-                height: 16px;
+            .hamburger {
+                padding: 2px;
             }
 
-            .theme-menu {
-                right: 0;
-                top: calc(100% + 4px);
-                min-width: 140px;
-                position: absolute;
-            }
-        }
-
-
-        /* Prevenir scroll cuando el nav está abierto */
-        body.nav-open {
-            overflow: hidden;
-        }
-
-
-        /* SMALL MOBILE (max-width: 480px) - MEJORADO */
-        @media (max-width: 480px) {
-            header {
-                padding: 0.7rem 0.8rem;
-            }
-
-            .header-content {
-                gap: 0.6rem;
-            }
-
-            .logo {
-                font-size: 0.9rem;
-                gap: 0.3rem;
-            }
-
-            .logo-icon {
-                font-size: 1.2rem;
-            }
-
-            .nav-toggle {
-                padding: 0.5rem;
-            }
-
-            .nav-toggle span {
+            .hamburger span {
                 width: 18px;
                 height: 1.5px;
-            }
-
-            #themeSelectorWrap {
-                flex-shrink: 0;
-            }
-
-            .theme-trigger {
-                width: 36px;
-                height: 36px;
-                padding: 0.5rem;
-                min-width: 36px;
-            }
-
-            .theme-trigger svg {
-                width: 12px;
-                height: 12px;
-            }
-        }
-
-
-        /* Dropdown categorías en mobile - mejor posicionamiento */
-        @media (max-width: 768px) {
-            .cat-dropdown-menu {
-                right: 0;
-                left: auto;
-                min-width: 140px;
-                max-width: 90vw;
-            }
-        }
-
-
-        /* HEADER MOBILE - VISUAL MEJORADO */
-        @media (max-width: 768px) {
-            header {
-                padding: 0.75rem 1rem;
-                height: auto;
-            }
-
-            .header-content {
-                gap: 0.5rem;
-                width: 100%;
-            }
-
-            .logo {
-                flex-shrink: 0;
-            }
-
-            .nav-toggle {
-                width: 40px;
-                height: 40px;
-                padding: 0.5rem;
-            }
-
-            .nav-toggle span {
-                width: 20px;
-            }
-
-            /* Evitar el hueco azul dejando el orden correcto */
-            nav {
-                background: var(--header-bg);
-                box-shadow: inset 0 1px 2px rgba(0,0,0,0.05);
             }
         }
     </style>
 </head>
 <body>
-    <!-- HEADER -->
+    <!-- HEADER FIJO -->
     <header>
         <div class="header-content">
-            <div class="logo" onclick="showHome()">
+            <div class="logo">
                 <span class="logo-icon">🎮</span>
-                <div>
-                    NOVA <span>PIXEL</span> GAMES
-                </div>
+                <span>NOVA<span> PIXEL GAMES</span></span>
             </div>
-            <button class="nav-toggle" id="navToggle" onclick="toggleNav()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
             <nav id="navMenu">
-                <a onclick="showHome()">Inicio</a>
-                <a onclick="showCatalog()">Catálogo</a>
-                <a onclick="showAbout()">Acerca de</a>
-                <a onclick="showContact()">Contacto</a>
-                <!-- SELECTOR DE TEMA -->
+                <a href="#catalogo">Catálogo</a>
+                <a href="#acerca-de">Acerca de</a>
+                <a href="#contacto">Contacto</a>
+            </nav>
+            
+            <!-- Controles móviles en navbar -->
+            <div class="header-mobile-controls visible" id="headerMobileControls">
                 <div class="theme-selector-wrap" id="themeSelectorWrap">
-                    <button class="theme-trigger" id="themeTrigger" onclick="toggleThemeMenu()" title="Cambiar tema" aria-label="Cambiar tema">
-                        <svg id="themeIcon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.5"/>
-                            <line x1="8" y1="1" x2="8" y2="3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                            <line x1="8" y1="13" x2="8" y2="15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                            <line x1="1" y1="8" x2="3" y2="8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                            <line x1="13" y1="8" x2="15" y2="8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                            <line x1="2.93" y1="2.93" x2="4.34" y2="4.34" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                            <line x1="11.66" y1="11.66" x2="13.07" y2="13.07" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                            <line x1="2.93" y1="13.07" x2="4.34" y2="11.66" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                            <line x1="11.66" y1="4.34" x2="13.07" y2="2.93" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                        </svg>
-                    </button>
+                    <button class="theme-trigger" id="themeTrigger" aria-label="Cambiar tema">🎨</button>
                     <div class="theme-menu" id="themeMenu">
-                        <button class="theme-option active" data-theme="light" onclick="setTheme('light')">
-                            <span class="theme-swatch" style="background:#f5f5f5;border:2px solid #ccc;flex-shrink:0;"></span>
-                            <span style="color:inherit;">Claro</span>
+                        <button class="theme-option active" data-theme="light">
+                            <span class="theme-swatch" style="background: #ffffff; border: 1px solid #333;"></span>
+                            Claro
                         </button>
-                        <button class="theme-option" data-theme="dark" onclick="setTheme('dark')">
-                            <span class="theme-swatch" style="background:#1a1a1a;border:2px solid #555;flex-shrink:0;"></span>
-                            <span style="color:inherit;">Oscuro</span>
+                        <button class="theme-option" data-theme="dark">
+                            <span class="theme-swatch" style="background: #1a1a1a;"></span>
+                            Oscuro
                         </button>
-                        <button class="theme-option" data-theme="cyber" onclick="setTheme('cyber')">
-                            <span class="theme-swatch" style="background:linear-gradient(135deg,#ff2d78,#00e5ff);border:none;flex-shrink:0;"></span>
-                            <span style="color:inherit;">Arcade Retro</span>
+                        <button class="theme-option" data-theme="cyber">
+                            <span class="theme-swatch" style="background: linear-gradient(135deg, #ff2d78, #00e5ff);"></span>
+                            Arcade Retro
                         </button>
                     </div>
                 </div>
-                <span id="adminTrigger" class="admin-trigger" onclick="registerAdminClick()" aria-hidden="true"></span>
-            </nav>
+                <button class="hamburger" id="hamburger" aria-label="Menú">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
         </div>
     </header>
 
-    <!-- MAIN CONTENT -->
-    <main id="main-content">
-        <!-- HOME -->
-        <section id="home" class="home-section">
-            <div class="hero">
-                <h1>NOVA PIXEL GAMES</h1>
-                <p>Tu universo de juegos online. Juega al instante, sin descargas.</p>
-                <div class="hero-buttons">
-                    <button class="btn btn-primary" onclick="showCatalog()">Explorar Juegos</button>
-                    <button class="btn btn-secondary" onclick="showAbout()">Saber Más</button>
-                </div>
+    <div class="nav-mobile-overlay" id="navOverlay"></div>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main>
+        <!-- SECCIÓN HERO -->
+        <section class="hero">
+            <h1>Tu Universo de Juegos Online</h1>
+            <p>Explora nuestra colección de juegos arcade, puzzle, acción y más. ¡Juega ahora!</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary">Jugar Ahora</button>
+                <button class="btn btn-secondary">Ver Catálogo</button>
             </div>
         </section>
 
-        <!-- CATALOG -->
-        <section id="catalog" class="catalog-section" style="display: none;">
-            <div class="filters" id="filtersContainer">
-                <input type="text" class="search-box" id="searchInput" placeholder="Buscar juegos..." onkeyup="filterGames()">
-                <div class="cat-dropdown-wrap" id="catDropdownWrap">
-                    <div class="cat-dropdown-trigger" id="catDropdownTrigger" onclick="toggleCatDropdown()">
-                        <!-- ícono filtro minimalista -->
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <line x1="2" y1="4" x2="14" y2="4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                            <line x1="4" y1="8" x2="12" y2="8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                            <line x1="6" y1="12" x2="10" y2="12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <!-- SECCIÓN CATÁLOGO -->
+        <section class="catalog-section" id="catalogo">
+            <div class="filters">
+                <input type="text" id="searchInput" class="search-box" placeholder="Busca un juego...">
+                <div class="cat-dropdown-wrap">
+                    <button class="cat-dropdown-trigger" id="catDropdownTrigger">
+                        <span id="catDropdownLabel">Categoría</span>
+                        <span id="catActiveDot" class="cat-active-dot"></span>
+                        <svg class="chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="13 6 8 11 3 6"></polyline>
                         </svg>
-                        <span id="catDropdownLabel">Categorías</span>
-                        <span class="cat-active-dot" id="catActiveDot"></span>
-                        <svg class="chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
+                    </button>
                     <div class="cat-dropdown-menu" id="catDropdownMenu">
-                        <!-- Opciones generadas dinámicamente -->
+                        <button class="cat-dropdown-item active" data-category="all">
+                            <svg class="cat-check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="13 3 5 12 2 9"></polyline>
+                            </svg>
+                            Todos
+                        </button>
+                        <button class="cat-dropdown-item" data-category="arcade">
+                            <svg class="cat-check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="13 3 5 12 2 9"></polyline>
+                            </svg>
+                            Arcade
+                        </button>
+                        <button class="cat-dropdown-item" data-category="puzzle">
+                            <svg class="cat-check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="13 3 5 12 2 9"></polyline>
+                            </svg>
+                            Puzzle
+                        </button>
+                        <button class="cat-dropdown-item" data-category="accion">
+                            <svg class="cat-check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="13 3 5 12 2 9"></polyline>
+                            </svg>
+                            Acción
+                        </button>
+                        <button class="cat-dropdown-item" data-category="estrategia">
+                            <svg class="cat-check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="13 3 5 12 2 9"></polyline>
+                            </svg>
+                            Estrategia
+                        </button>
                     </div>
                 </div>
             </div>
 
-            <div id="gamesContainer" class="games-grid">
-                <div class="loading">
-                    <div class="spinner"></div>
-                    <p>Cargando juegos...</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- ABOUT -->
-        <section id="about" class="about-section" style="display: none; text-align: center;">
-            <h1 style="font-size: 2.5rem; margin-bottom: 2rem; color: var(--text-light);">Acerca de NOVA PIXEL GAMES</h1>
-            <div style="max-width: 800px; margin: 0 auto; background: white; padding: 2rem; border-radius: 8px; border: 1px solid var(--border-color); box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);">
-                <p style="font-size: 1.05rem; line-height: 1.8; color: var(--text-light); margin-bottom: 1rem;">
-                    NOVA PIXEL GAMES es una plataforma moderna para jugar a juegos HTML5 sin necesidad de descargas. 
-                    Diseñada para ser accesible, rápida y divertida en cualquier dispositivo.
-                </p>
-                <p style="color: var(--text-muted);">
-                    Juega directamente desde tu navegador • Funciona en cualquier dispositivo • Actualizaciones constantes
-                </p>
-            </div>
-        </section>
-
-        <!-- CONTACT -->
-        <section id="contact" class="contact-section" style="display: none; text-align: center;">
-            <h1 style="font-size: 2.5rem; margin-bottom: 2rem; color: var(--text-light);">Contacto</h1>
-            <div style="max-width: 600px; margin: 0 auto; background: white; padding: 2rem; border-radius: 8px; border: 1px solid var(--border-color); box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);">
-                <p style="color: var(--text-light); margin-bottom: 1rem;">¿Preguntas o sugerencias?</p>
-                <p style="color: var(--text-muted);">contacto@novapixelgames.com</p>
+            <!-- GRID DE JUEGOS -->
+            <div class="games-grid" id="gamesGrid">
+                <!-- Los juegos se generan aquí con JavaScript -->
             </div>
         </section>
     </main>
 
-    <!-- MODALS -->
-    <div id="gameDetailModal" class="modal">
+    <!-- MODAL PARA DETALLES DEL JUEGO -->
+    <div class="modal" id="gameModal">
         <div class="modal-content">
-            <button class="close-btn" onclick="closeModal('gameDetailModal')">✕</button>
-            <div id="gameDetailContent"></div>
+            <button class="close-btn" id="closeModal">&times;</button>
+            <h2 id="modalGameTitle">Título del Juego</h2>
+            <p id="modalGameDescription">Descripción aquí</p>
+            <button class="btn btn-primary" id="playGameBtn">Jugar</button>
         </div>
     </div>
 
     <!-- REPRODUCTOR DE JUEGO -->
-    <div id="playerOverlay" class="player-overlay">
+    <div class="player-overlay" id="playerOverlay">
+        <button class="player-show-bar-btn" id="playerShowBarBtn">📊</button>
         <div class="player-bar" id="playerBar">
             <div class="player-bar-left">
-                <button class="player-back-btn" onclick="closePlayer()">← Volver</button>
-                <span class="player-title" id="playerTitle"></span>
+                <button class="player-back-btn" id="playerBackBtn">← Atrás</button>
+                <span class="player-title" id="playerTitle">Juego</span>
             </div>
-            <div style="display:flex;gap:0.5rem;align-items:center;">
-                <button class="player-back-btn" onclick="togglePlayerBar()" title="Ocultar barra">✕</button>
-                <button class="player-fullscreen-btn" onclick="toggleFullscreen()">⛶ Pantalla completa</button>
-            </div>
+            <button class="player-fullscreen-btn" id="playerFullscreenBtn">⛶ Pantalla Completa</button>
         </div>
-        <div class="player-frame-wrap" id="playerFrameWrap">
-            <button class="player-show-bar-btn" id="playerShowBarBtn" onclick="togglePlayerBar()">▼ Menú</button>
+        <div class="player-frame-wrap">
             <div class="player-status" id="playerStatus">
                 <div class="spinner"></div>
-                <p>Cargando juego...</p>
+                <h3>Cargando juego...</h3>
             </div>
-            <!-- el iframe se inyecta dinámicamente al abrir el reproductor -->
+            <iframe id="gameFrame" style="display: none;"></iframe>
         </div>
     </div>
-
-    <!-- ADMIN LOGIN MODAL -->
-    <div id="adminLoginModal" class="modal">
-        <div class="modal-content admin-login-content">
-            <button class="close-btn" onclick="closeAdminLogin()">✕</button>
-            <h2>Acceso de administrador</h2>
-            <div class="form-group">
-                <label for="adminPasswordInput">Contraseña</label>
-                <input type="password" id="adminPasswordInput" placeholder="••••••••" onkeyup="if(event.key==='Enter') checkAdminPassword()">
-            </div>
-            <p class="admin-error" id="adminError">Contraseña incorrecta.</p>
-            <button class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;" onclick="checkAdminPassword()">Entrar</button>
-        </div>
-    </div>
-
-    <!-- ADMIN PANEL -->
-    <div id="adminPanel" class="admin-panel">
-        <div class="admin-bar">
-            <h2>🛠 Panel de administración — NOVA PIXEL GAMES</h2>
-            <div class="admin-bar-actions">
-                <button class="admin-btn" onclick="openGameForm()">+ Nuevo juego</button>
-                <button class="admin-btn exit" onclick="closeAdminPanel()">Salir</button>
-            </div>
-        </div>
-
-        <div class="admin-content">
-            <div id="adminStatusBanner" class="admin-status-banner"></div>
-
-            <!-- Token de GitHub -->
-            <div class="admin-token-card">
-                <h3 style="margin-bottom: 0.5rem; font-size: 0.95rem;">Conexión con GitHub</h3>
-                <p>
-                    Repositorio configurado: <strong>ilunez/proyecto-web-2026-1</strong> (rama <strong>main</strong>).
-                    Pega aquí tu Personal Access Token (fine-grained, permiso "Contents: Read and write" sobre ese repo)
-                    para poder guardar cambios reales en <code>games.json</code>. El token se guarda solo en este
-                    navegador, nunca en el código del sitio.
-                </p>
-                <div class="admin-token-row">
-                    <input type="password" id="githubTokenInput" placeholder="github_pat_..." class="search-box" style="margin:0;">
-                    <button class="btn btn-primary" onclick="saveGithubToken()">Guardar token</button>
-                    <button class="btn btn-secondary" onclick="clearGithubToken()">Quitar token</button>
-                </div>
-            </div>
-
-            <!-- Lista de juegos -->
-            <!-- Gestión de categorías -->
-            <div class="admin-section-title">Categorías</div>
-            <div class="admin-form-card" style="margin-bottom:1.5rem;">
-                <div id="adminCategoryList" style="display:flex;flex-wrap:wrap;gap:0.6rem;margin-bottom:1rem;"></div>
-                <div style="display:flex;gap:0.6rem;flex-wrap:wrap;align-items:center;">
-                    <input type="text" id="newCategoryInput" class="search-box" style="margin:0;max-width:220px;" placeholder="Nueva categoría...">
-                    <button class="btn btn-primary" onclick="addCategory()">+ Agregar</button>
-                </div>
-                <p class="admin-form-hint" style="margin-top:0.6rem;">
-                    Las categorías activas aparecen como filtros en el catálogo solo si tienen al menos un juego publicado.
-                    Para renombrar haz doble clic sobre el nombre.
-                </p>
-            </div>
-
-            <!-- Lista de juegos -->
-            <div class="admin-section-title">Juegos publicados y no publicados</div>
-            <div id="adminGameList" class="admin-game-list"></div>
-
-            <!-- Formulario crear/editar -->
-            <div id="adminFormSection" style="display: none;">
-                <div class="admin-section-title" id="adminFormTitle">Nuevo juego</div>
-                <div class="admin-form-card">
-                    <input type="hidden" id="formGameId">
-
-                    <div class="admin-form-grid">
-                        <div class="form-group span-2">
-                            <label for="formTitle">Título del juego</label>
-                            <input type="text" id="formTitle" class="search-box" style="margin:0;" placeholder="Ej: Mi Aventura Pixel">
-                        </div>
-
-                        <div class="form-group span-2">
-                            <label for="formDescription">Descripción</label>
-                            <textarea id="formDescription" class="search-box" style="margin:0;" placeholder="Descripción corta del juego"></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="formCategory">Categoría</label>
-                            <select id="formCategory" class="search-box" style="margin:0;">
-                                <option value="accion">Acción</option>
-                                <option value="puzzle">Puzzle</option>
-                                <option value="arcade">Arcade</option>
-                                <option value="casual">Casual</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="formRating">Calificación (0 a 5)</label>
-                            <input type="number" id="formRating" class="search-box" style="margin:0;" min="0" max="5" step="0.1" value="5">
-                        </div>
-
-                        <div class="form-group span-2">
-                            <label>Portada</label>
-                            <div class="admin-cover-options">
-                                <label><input type="radio" name="coverType" value="emoji" checked onchange="toggleCoverInputs()"> Emoji</label>
-                                <label><input type="radio" name="coverType" value="image" onchange="toggleCoverInputs()"> URL de imagen</label>
-                            </div>
-                            <input type="text" id="formEmoji" class="search-box" style="margin:0;" placeholder="🎮" maxlength="4">
-                            <input type="text" id="formImageUrl" class="search-box" style="margin:0; display:none;" placeholder="https://.../portada.png">
-                        </div>
-
-                        <div class="form-group span-2">
-                            <label for="formRepoLink">Enlace del repositorio de GitHub del juego (o URL ya publicada)</label>
-                            <input type="text" id="formRepoLink" class="search-box" style="margin:0;" placeholder="https://github.com/usuario/mi-juego  ó  https://usuario.github.io/mi-juego/">
-                            <p class="admin-form-hint">
-                                Si pegas un link de github.com/usuario/repo, se convertirá automáticamente a su URL de
-                                GitHub Pages (usuario.github.io/repo/). Si ya tienes la URL publicada (GitHub Pages,
-                                Netlify, Vercel), también puedes pegarla directamente.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="admin-form-actions">
-                        <button class="btn btn-primary" onclick="saveGameForm()">Guardar juego</button>
-                        <button class="btn btn-secondary" onclick="closeGameForm()">Cancelar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- FOOTER -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-links">
-                <a onclick="showAbout()">Acerca de</a>
-                <a onclick="showContact()">Contacto</a>
-                <a href="#">Privacidad</a>
-                <a href="#">Términos</a>
-            </div>
-            <p>&copy; 2026 NOVA PIXEL GAMES. Todos los derechos reservados.</p>
-        </div>
-    </footer>
 
     <script>
-        /* ==========================================================
-           CONFIGURACIÓN
-           ========================================================== */
-        const GITHUB_OWNER = 'ilunez';
-        const GITHUB_REPO = 'proyecto-web-2026-1';
-        const GITHUB_BRANCH = 'main';
-        const GAMES_FILE_PATH = 'games.json';
-        const ADMIN_PASSWORD = 'PIXELGAMESXPOWER777';
-        const ADMIN_CLICKS_REQUIRED = 14;
-        const ADMIN_CLICK_RESET_MS = 2500;
-
-        // URL pública: cualquier visitante lee games.json sin token
-        // (funciona porque el repo ahora es público)
-        const GAMES_PUBLIC_URL =
-            `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${GITHUB_BRANCH}/${GAMES_FILE_PATH}`;
-
-        // URL autenticada: solo la usa el panel ADMIN para leer y escribir
-        const GITHUB_API_CONTENTS_URL =
-            `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${GAMES_FILE_PATH}?ref=${GITHUB_BRANCH}`;
-
-        /* ==========================================================
-           CATÁLOGO DE JUEGOS (respaldo local)
-           ==========================================================
-           Este array solo se usa si todavía no existe games.json en el
-           repo, o si no se pudo leer (por ejemplo sin token guardado en
-           este navegador). En cuanto guardes el primer juego desde el
-           panel admin, se creará games.json en el repo y desde entonces
-           ese archivo será la fuente real de datos para todos los
-           visitantes.
-           ========================================================== */
-        let games = [
-            {
-                id: 1,
-                title: 'Juego de ejemplo',
-                description: 'Este es un juego de muestra. Entra al panel de administración para reemplazarlo o agregar los tuyos.',
-                category: 'arcade',
-                emoji: '🎮',
-                imageUrl: '',
-                url: null,
-                published: true,
-                rating: 5.0,
-                plays: 0
-            }
+        // ============================================
+        // DATOS DE JUEGOS
+        // ============================================
+        const games = [
+            { id: 1, title: 'Pac-Man', category: 'arcade', emoji: '👾', description: 'El clásico juego de arcade. Guía a Pac-Man por el laberinto evitando fantasmas.', url: 'https://www.pacmanplay.org/' },
+            { id: 2, title: 'Tetris', category: 'puzzle', emoji: '🧱', description: 'Encaja las piezas en el lugar correcto antes de que se llene la pantalla.', url: 'https://tetris.com/play-tetris' },
+            { id: 3, title: 'Space Invaders', category: 'arcade', emoji: '👽', description: 'Dispara a las naves enemigas antes de que lleguen a la Tierra.', url: 'https://www.retrogames.cc/arcade-games/space-invaders' },
+            { id: 4, title: 'Chess', category: 'estrategia', emoji: '♟️', description: 'El juego de estrategia más antiguo del mundo. Derrota al ordenador.', url: 'https://www.chess.com' },
+            { id: 5, title: '2048', category: 'puzzle', emoji: '🔢', description: 'Desliza las fichas y combínalas para llegar al número 2048.', url: 'https://play2048.co/' },
+            { id: 6, title: 'Flappy Bird', category: 'accion', emoji: '🐦', description: 'Controla el pájaro y evita los obstáculos. ¡Es más difícil de lo que parece!', url: '#' },
+            { id: 7, title: 'Minesweeper', category: 'puzzle', emoji: '💣', description: 'Evita las minas mientras descubres todas las casillas seguras.', url: '#' },
+            { id: 8, title: 'Snake', category: 'arcade', emoji: '🐍', description: 'Come la comida, crece más largo, pero evita chocar contigo mismo.', url: '#' },
         ];
 
-        // sha del archivo games.json en GitHub (necesario para poder
-        // sobreescribirlo vía la API). null mientras no se ha leído aún.
-        let githubFileSha = null;
-        let gamesLoadedFromGithub = false;
+        // ============================================
+        // ESTADO GLOBAL
+        // ============================================
+        let currentCategory = 'all';
+        let currentSearchTerm = '';
+        let currentGame = null;
 
-        // Categorías por defecto — se sobreescriben con las de games.json cuando se carga
-        let categories = [
-            { id: 'accion',  name: 'Acción',  active: true },
-            { id: 'puzzle',  name: 'Puzzle',  active: true },
-            { id: 'arcade',  name: 'Arcade',  active: true },
-            { id: 'casual',  name: 'Casual',  active: true }
-        ];
+        // ============================================
+        // SELECTOR DE TEMAS
+        // ============================================
+        const themeTrigger = document.getElementById('themeTrigger');
+        const themeMenu = document.getElementById('themeMenu');
+        const themeOptions = document.querySelectorAll('.theme-option');
 
-        /* ---------- Carga pública al iniciar (sin token, para todos) ---------- */
-        async function loadGamesPublic() {
-            try {
-                const res = await fetch(GAMES_PUBLIC_URL + '?t=' + Date.now());
-                if (!res.ok) return;
+        themeTrigger.addEventListener('click', () => {
+            themeMenu.classList.toggle('open');
+        });
 
-                const data = await res.json();
-
-                // El JSON puede ser {games:[...], categories:[...]} o solo un array legacy
-                if (Array.isArray(data)) {
-                    games = data;
-                } else {
-                    if (Array.isArray(data.games)) games = data.games;
-                    if (Array.isArray(data.categories)) categories = data.categories;
-                }
-
-                if (document.getElementById('catalog').style.display !== 'none') {
-                    loadGames();
-                }
-            } catch (err) {
-                console.warn('No se pudo cargar games.json público:', err.message);
-            }
-        }
-
-        // NAVIGATION & MOBILE MENU
-        function toggleNav() {
-            const nav = document.getElementById('navMenu');
-            const toggle = document.getElementById('navToggle');
-            nav.classList.toggle('open');
-            toggle.classList.toggle('active');
-            document.body.classList.toggle('nav-open');
-        }
-
-        function closeNav() {
-            const nav = document.getElementById('navMenu');
-            const toggle = document.getElementById('navToggle');
-            nav.classList.remove('open');
-            toggle.classList.remove('active');
-            document.body.classList.remove('nav-open');
-        }
-
-        // Cerrar nav al hacer clic en un enlace
-        document.addEventListener('DOMContentLoaded', () => {
-            document.querySelectorAll('nav a').forEach(a => {
-                a.addEventListener('click', closeNav);
+        themeOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                const theme = option.getAttribute('data-theme');
+                document.documentElement.setAttribute('data-theme', theme);
+                localStorage.setItem('npg_theme', theme);
+                
+                // Actualizar opción activa
+                themeOptions.forEach(opt => opt.classList.remove('active'));
+                option.classList.add('active');
+                
+                themeMenu.classList.remove('open');
             });
         });
 
-        function showHome() {
-            hideAllSections();
-            document.getElementById('home').style.display = 'block';
-        }
+        // Cerrar menú al hacer clic fuera
+        document.addEventListener('click', (e) => {
+            if (!themeTrigger.contains(e.target) && !themeMenu.contains(e.target)) {
+                themeMenu.classList.remove('open');
+            }
+        });
 
-        function showCatalog() {
-            hideAllSections();
-            document.getElementById('catalog').style.display = 'block';
-            loadGamesPublic().then(() => loadGames());
-        }
+        // ============================================
+        // MENÚ MÓVIL
+        // ============================================
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+        const navOverlay = document.getElementById('navOverlay');
 
-        function showAbout() {
-            hideAllSections();
-            document.getElementById('about').style.display = 'block';
-        }
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('open');
+            navMenu.classList.toggle('open');
+            navOverlay.classList.toggle('open');
+        });
 
-        function showContact() {
-            hideAllSections();
-            document.getElementById('contact').style.display = 'block';
-        }
+        navOverlay.addEventListener('click', () => {
+            hamburger.classList.remove('open');
+            navMenu.classList.remove('open');
+            navOverlay.classList.remove('open');
+        });
 
-        function hideAllSections() {
-            document.querySelectorAll('main section').forEach(s => {
-                s.style.display = 'none';
+        // Cerrar menú al hacer clic en un enlace
+        navMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('open');
+                navMenu.classList.remove('open');
+                navOverlay.classList.remove('open');
             });
-        }
+        });
 
-        // RENDER DE TARJETAS (vista pública: solo juegos publicados)
-        function renderGameCards(list) {
-            const container = document.getElementById('gamesContainer');
+        // ============================================
+        // FILTROS Y BÚSQUEDA
+        // ============================================
+        const searchInput = document.getElementById('searchInput');
+        const catDropdownTrigger = document.getElementById('catDropdownTrigger');
+        const catDropdownMenu = document.getElementById('catDropdownMenu');
+        const catDropdownItems = document.querySelectorAll('.cat-dropdown-item');
+        const catActiveDot = document.getElementById('catActiveDot');
 
-            if (list.length === 0) {
-                container.innerHTML = `
-                    <div class="loading" style="grid-column: 1 / -1;">
-                        <p>No se encontraron juegos.</p>
-                    </div>
-                `;
+        // Búsqueda
+        searchInput.addEventListener('input', (e) => {
+            currentSearchTerm = e.target.value.toLowerCase();
+            renderGames();
+        });
+
+        // Filtro de categoría
+        catDropdownItems.forEach(item => {
+            item.addEventListener('click', () => {
+                currentCategory = item.getAttribute('data-category');
+                
+                // Actualizar UI
+                catDropdownItems.forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
+                
+                // Mostrar/ocultar el punto indicador
+                if (currentCategory !== 'all') {
+                    catActiveDot.classList.add('visible');
+                } else {
+                    catActiveDot.classList.remove('visible');
+                }
+                
+                catDropdownMenu.classList.remove('open');
+                renderGames();
+            });
+        });
+
+        // Toggle dropdown
+        catDropdownTrigger.addEventListener('click', () => {
+            catDropdownMenu.classList.toggle('open');
+        });
+
+        // Cerrar dropdown al hacer clic fuera
+        document.addEventListener('click', (e) => {
+            if (!catDropdownTrigger.contains(e.target) && !catDropdownMenu.contains(e.target)) {
+                catDropdownMenu.classList.remove('open');
+            }
+        });
+
+        // ============================================
+        // RENDERIZAR JUEGOS
+        // ============================================
+        function renderGames() {
+            const gamesGrid = document.getElementById('gamesGrid');
+            gamesGrid.innerHTML = '';
+
+            let filteredGames = games.filter(game => {
+                const matchCategory = currentCategory === 'all' || game.category === currentCategory;
+                const matchSearch = game.title.toLowerCase().includes(currentSearchTerm) || 
+                                  game.description.toLowerCase().includes(currentSearchTerm);
+                return matchCategory && matchSearch;
+            });
+
+            if (filteredGames.length === 0) {
+                gamesGrid.innerHTML = '<p style="grid-column: 1 / -1; text-align: center; color: var(--text-muted); padding: 2rem;">No se encontraron juegos.</p>';
                 return;
             }
 
-            container.innerHTML = list.map(game => `
-                <div class="game-card ${!game.url ? 'coming-soon' : ''}" onclick="showGameDetail(${game.id})">
+            filteredGames.forEach(game => {
+                const card = document.createElement('div');
+                card.className = game.id > 5 ? 'game-card coming-soon' : 'game-card';
+                card.innerHTML = `
                     <div class="game-thumbnail">
-                        ${game.imageUrl
-                            ? `<img src="${escapeHtml(game.imageUrl)}" alt="${escapeHtml(game.title)}" style="width:100%;height:100%;object-fit:cover;">`
-                            : (game.emoji || '🎮')}
-                        ${!game.url ? '<span class="coming-soon-badge">PRÓXIMAMENTE</span>' : ''}
+                        ${game.emoji}
+                        ${game.id > 5 ? '<div class="coming-soon-badge">PRÓXIMAMENTE</div>' : ''}
                     </div>
                     <div class="game-info">
-                        <h3 class="game-title">${escapeHtml(game.title)}</h3>
-                        <span class="game-category">${escapeHtml(game.category)}</span>
-                        <p class="game-description">${escapeHtml(game.description)}</p>
+                        <h3 class="game-title">${game.title}</h3>
+                        <span class="game-category">${game.category.charAt(0).toUpperCase() + game.category.slice(1)}</span>
+                        <p class="game-description">${game.description}</p>
                         <div class="game-footer">
-                            <span class="game-rating">★ ${game.rating}</span>
-                            <button class="play-btn" onclick="event.stopPropagation(); playGame(${game.id})">
-                                ${game.url ? 'Jugar' : 'Ver más'}
+                            <span class="game-rating">⭐ ${(Math.random() * 2 + 3).toFixed(1)}</span>
+                            <button class="play-btn" ${game.id > 5 ? 'disabled style="opacity: 0.5; cursor: not-allowed;"' : ''}>
+                                ${game.id > 5 ? 'No disponible' : 'Jugar'}
                             </button>
                         </div>
                     </div>
-                </div>
-            `).join('');
-        }
-
-        function escapeHtml(str) {
-            const div = document.createElement('div');
-            div.textContent = str ?? '';
-            return div.innerHTML;
-        }
-
-        function getPublishedGames() {
-            return games.filter(g => g.published !== false);
-        }
-
-        // LOAD GAMES
-        // Categoría actualmente seleccionada
-        let currentCategory = 'todos';
-
-        /* ---------- Dropdown de categorías ---------- */
-        function renderCatDropdown() {
-            const menu = document.getElementById('catDropdownMenu');
-            if (!menu) return;
-
-            const published = getPublishedGames();
-            const usedCatIds = new Set(published.map(g => g.category));
-            const visibleCats = categories.filter(c => c.active !== false && usedCatIds.has(c.id));
-
-            const allItems = [{ id: 'todos', name: 'Todos' }, ...visibleCats];
-
-            menu.innerHTML = allItems.map(cat => `
-                <button
-                    class="cat-dropdown-item ${currentCategory === cat.id ? 'active' : ''}"
-                    onclick="selectCategory('${cat.id}')"
-                >
-                    <svg class="cat-check" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M2 7L5.5 10.5L12 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    ${escapeHtml(cat.name)}
-                </button>
-            `).join('');
-        }
-
-        function toggleCatDropdown() {
-            const trigger = document.getElementById('catDropdownTrigger');
-            const menu = document.getElementById('catDropdownMenu');
-            const isOpen = menu.classList.contains('open');
-
-            if (!isOpen) {
-                renderCatDropdown();
-                menu.classList.add('open');
-                trigger.classList.add('open');
-            } else {
-                menu.classList.remove('open');
-                trigger.classList.remove('open');
-            }
-        }
-
-        function closeCatDropdown() {
-            document.getElementById('catDropdownMenu')?.classList.remove('open');
-            document.getElementById('catDropdownTrigger')?.classList.remove('open');
-        }
-
-        // Cerrar el dropdown al hacer clic fuera
-        document.addEventListener('click', (e) => {
-            const wrap = document.getElementById('catDropdownWrap');
-            if (wrap && !wrap.contains(e.target)) closeCatDropdown();
-        });
-
-        function selectCategory(catId) {
-            currentCategory = catId;
-            closeCatDropdown();
-
-            // Actualizar etiqueta del trigger
-            const label = document.getElementById('catDropdownLabel');
-            const dot = document.getElementById('catActiveDot');
-            if (catId === 'todos') {
-                label.textContent = 'Categorías';
-                dot.classList.remove('visible');
-            } else {
-                const cat = categories.find(c => c.id === catId);
-                label.textContent = cat ? cat.name : catId;
-                dot.classList.add('visible');
-            }
-
-            filterGames();
-        }
-
-        function loadGames() {
-            // Resetear categoría si la actual ya no existe o no tiene juegos
-            const published = getPublishedGames();
-            const usedCatIds = new Set(published.map(g => g.category));
-            const stillValid = currentCategory === 'todos' || (
-                categories.some(c => c.id === currentCategory && c.active !== false) &&
-                usedCatIds.has(currentCategory)
-            );
-            if (!stillValid) {
-                currentCategory = 'todos';
-                const label = document.getElementById('catDropdownLabel');
-                const dot = document.getElementById('catActiveDot');
-                if (label) label.textContent = 'Categorías';
-                if (dot) dot.classList.remove('visible');
-            }
-            renderGameCards(getPublishedGames());
-        }
-
-        // FILTER & SEARCH
-        function filterGames() {
-            const search = document.getElementById('searchInput').value.toLowerCase();
-            let list = getPublishedGames();
-            list = currentCategory === 'todos' ? list : list.filter(g => g.category === currentCategory);
-            list = list.filter(g => g.title.toLowerCase().includes(search));
-            renderGameCards(list);
-        }
-
-        function filterByCategory(category) {
-            selectCategory(category);
-        }
-
-        // MODALS
-        function showGameDetail(id) {
-            const game = games.find(g => g.id === id);
-            if (!game) return;
-
-            const content = document.getElementById('gameDetailContent');
-            const coverHtml = game.imageUrl
-                ? `<img src="${escapeHtml(game.imageUrl)}" alt="${escapeHtml(game.title)}" style="width:100%;max-height:220px;object-fit:cover;border-radius:8px;margin-bottom:1rem;">`
-                : `<div style="font-size: 4rem; margin-bottom: 1rem;">${game.emoji || '🎮'}</div>`;
-
-            content.innerHTML = `
-                <div style="text-align: center;">
-                    ${coverHtml}
-                    <h2 style="color: var(--text-light); margin-bottom: 1rem;">${escapeHtml(game.title)}</h2>
-                    <p style="color: var(--text-muted); margin-bottom: 1.5rem;">${escapeHtml(game.description)}</p>
-                    
-                    <div style="background: var(--secondary); padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem; border: 1px solid var(--border-color);">
-                        <p style="color: var(--text-light); margin-bottom: 0.5rem;">
-                            <strong>Categoría:</strong> ${game.category}
-                        </p>
-                        <p style="color: var(--text-light); margin-bottom: 0.5rem;">
-                            <strong>Calificación:</strong> ★ ${game.rating}
-                        </p>
-                        <p style="color: var(--text-muted);">
-                            ${game.plays} jugadas
-                        </p>
-                    </div>
-                    
-                    ${game.url
-                        ? `<button class="btn btn-primary" onclick="playGame(${game.id}); closeModal('gameDetailModal')" style="width: 100%;">▶ JUGAR AHORA</button>`
-                        : `<button class="btn btn-secondary" disabled style="width: 100%; opacity: 0.6; cursor: not-allowed;">⏳ Próximamente disponible</button>`
-                    }
-                </div>
-            `;
-            
-            openModal('gameDetailModal');
-        }
-
-        function openModal(id) {
-            document.getElementById(id).classList.add('active');
-        }
-
-        function closeModal(id) {
-            document.getElementById(id).classList.remove('active');
-        }
-
-        /* ==========================================================
-           REPRODUCTOR DE JUEGOS (iframe a pantalla completa)
-           ========================================================== */
-        function playGame(id) {
-            const game = games.find(g => g.id === id);
-            if (!game) return;
-
-            if (!game.url) {
-                showGameDetail(id);
-                return;
-            }
-
-            game.plays = (game.plays || 0) + 1;
-
-            document.getElementById('playerTitle').textContent = game.title;
-
-            const wrap = document.getElementById('playerFrameWrap');
-            const status = document.getElementById('playerStatus');
-
-            // limpiar iframe previo si existía
-            const oldFrame = wrap.querySelector('iframe');
-            if (oldFrame) oldFrame.remove();
-
-            status.classList.remove('hidden');
-            status.innerHTML = `
-                <div class="spinner"></div>
-                <p>Cargando ${game.title}...</p>
-            `;
-
-            const iframe = document.createElement('iframe');
-            iframe.id = 'gameFrame';
-            iframe.allow = 'fullscreen; gamepad; autoplay';
-            iframe.title = game.title;
-
-            // si el juego tarda demasiado en responder, mostramos ayuda
-            const timeoutId = setTimeout(() => {
-                status.classList.remove('hidden');
-                status.innerHTML = `
-                    <h3>No se pudo cargar el juego</h3>
-                    <p>
-                        Esto puede pasar si la URL aún no está publicada, si el
-                        despliegue está caído, o si el sitio bloquea ser
-                        mostrado dentro de otra página (cabecera
-                        X-Frame-Options). Verifica la URL configurada para
-                        "${game.title}" en el código.
-                    </p>
-                    <button class="btn btn-primary" onclick="window.open('${game.url}', '_blank')">
-                        Abrir en una pestaña nueva
-                    </button>
                 `;
-            }, 8000);
 
-            iframe.onload = () => {
-                clearTimeout(timeoutId);
-                status.classList.add('hidden');
-            };
+                if (game.id <= 5) {
+                    card.addEventListener('click', () => openGameModal(game));
+                }
 
-            iframe.src = game.url;
-            wrap.appendChild(iframe);
-
-            document.getElementById('playerOverlay').classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closePlayer() {
-            document.getElementById('playerOverlay').classList.remove('active');
-            document.body.style.overflow = '';
-
-            // detener el juego completamente al salir (libera memoria/audio)
-            const wrap = document.getElementById('playerFrameWrap');
-            const frame = wrap.querySelector('iframe');
-            if (frame) frame.remove();
-        }
-
-        function toggleFullscreen() {
-            const wrap = document.getElementById('playerFrameWrap');
-            if (!document.fullscreenElement) {
-                wrap.requestFullscreen?.().catch(() => {});
-            } else {
-                document.exitFullscreen?.();
-            }
-        }
-
-        // Cerrar el reproductor con la tecla Escape (si no está en fullscreen nativo)
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && document.getElementById('playerOverlay').classList.contains('active') && !document.fullscreenElement) {
-                closePlayer();
-            }
-        });
-
-        /* ==========================================================
-           SISTEMA DE TEMAS
-           ========================================================== */
-        const THEMES = {
-            light: {
-                icon: `<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.5"/><line x1="8" y1="1" x2="8" y2="3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="8" y1="13" x2="8" y2="15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="1" y1="8" x2="3" y2="8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="13" y1="8" x2="15" y2="8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="2.93" y1="2.93" x2="4.34" y2="4.34" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="11.66" y1="11.66" x2="13.07" y2="13.07" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="2.93" y1="13.07" x2="4.34" y2="11.66" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="11.66" y1="4.34" x2="13.07" y2="2.93" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>`
-            },
-            dark: {
-                icon: `<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 9.5A6 6 0 0 1 6.5 2.5a6 6 0 1 0 7 7z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`
-            },
-            cyber: {
-                icon: `<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="4" width="12" height="8" rx="1" stroke="currentColor" stroke-width="1.5"/><line x1="5" y1="7" x2="11" y2="7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="5" y1="9.5" x2="8" y2="9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="6" y1="2" x2="6" y2="4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="10" y1="2" x2="10" y2="4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>`
-            }
-        };
-
-        let currentTheme = localStorage.getItem('npg_theme') || 'light';
-
-        function applyTheme(theme) {
-            document.documentElement.setAttribute('data-theme', theme);
-            currentTheme = theme;
-            localStorage.setItem('npg_theme', theme);
-
-            // Actualizar icono del botón
-            const icon = document.getElementById('themeIcon');
-            if (icon && THEMES[theme]) icon.outerHTML = THEMES[theme].icon.replace('<svg', '<svg id="themeIcon"');
-
-            // Marcar la opción activa
-            document.querySelectorAll('.theme-option').forEach(btn => {
-                btn.classList.toggle('active', btn.dataset.theme === theme);
+                gamesGrid.appendChild(card);
             });
         }
 
-        function setTheme(theme) {
-            applyTheme(theme);
-            closeThemeMenu();
+        // ============================================
+        // MODAL DE JUEGO
+        // ============================================
+        const gameModal = document.getElementById('gameModal');
+        const closeModal = document.getElementById('closeModal');
+        const playGameBtn = document.getElementById('playGameBtn');
+
+        function openGameModal(game) {
+            currentGame = game;
+            document.getElementById('modalGameTitle').textContent = game.title;
+            document.getElementById('modalGameDescription').textContent = game.description;
+            gameModal.classList.add('active');
         }
 
-        function toggleThemeMenu() {
-            const menu = document.getElementById('themeMenu');
-            const isOpen = menu.classList.contains('open');
-            if (isOpen) {
-                closeThemeMenu();
-            } else {
-                menu.classList.add('open');
-            }
-        }
-
-        function closeThemeMenu() {
-            document.getElementById('themeMenu')?.classList.remove('open');
-        }
-
-        // Cerrar al hacer clic fuera
-        document.addEventListener('click', (e) => {
-            const wrap = document.getElementById('themeSelectorWrap');
-            if (wrap && !wrap.contains(e.target)) closeThemeMenu();
+        closeModal.addEventListener('click', () => {
+            gameModal.classList.remove('active');
         });
 
-        /* ==========================================================
-           ACTIVACIÓN DISCRETA DEL ADMIN (14 clics seguidos)
-           ========================================================== */
-        let adminClickCount = 0;
-        let adminClickTimer = null;
-
-        function registerAdminClick() {
-            const trigger = document.getElementById('adminTrigger');
-
-            // si ya está revelado el puntito, este clic abre el login
-            if (trigger.classList.contains('revealed')) {
-                openAdminLogin();
-                return;
+        gameModal.addEventListener('click', (e) => {
+            if (e.target === gameModal) {
+                gameModal.classList.remove('active');
             }
-
-            adminClickCount++;
-            clearTimeout(adminClickTimer);
-            adminClickTimer = setTimeout(() => { adminClickCount = 0; }, ADMIN_CLICK_RESET_MS);
-
-            if (adminClickCount >= ADMIN_CLICKS_REQUIRED) {
-                trigger.classList.add('revealed');
-                adminClickCount = 0;
-            }
-        }
-
-        function openAdminLogin() {
-            document.getElementById('adminPasswordInput').value = '';
-            document.getElementById('adminError').classList.remove('visible');
-            openModal('adminLoginModal');
-        }
-
-        function closeAdminLogin() {
-            closeModal('adminLoginModal');
-        }
-
-        function checkAdminPassword() {
-            const value = document.getElementById('adminPasswordInput').value;
-            if (value === ADMIN_PASSWORD) {
-                closeAdminLogin();
-                // ocultar de nuevo el puntito tras entrar, para discreción
-                document.getElementById('adminTrigger').classList.remove('revealed');
-                openAdminPanel();
-            } else {
-                document.getElementById('adminError').classList.add('visible');
-            }
-        }
-
-        /* ==========================================================
-           PANEL DE ADMINISTRACIÓN
-           ========================================================== */
-        function openAdminPanel() {
-            document.getElementById('adminPanel').classList.add('active');
-            document.body.style.overflow = 'hidden';
-
-            const savedToken = localStorage.getItem('npg_github_token') || '';
-            document.getElementById('githubTokenInput').value = savedToken;
-
-            if (savedToken && !gamesLoadedFromGithub) {
-                loadGamesFromGithub();
-            }
-
-            renderAdminGameList();
-            renderAdminCategoryList();
-        }
-
-        function closeAdminPanel() {
-            document.getElementById('adminPanel').classList.remove('active');
-            document.body.style.overflow = '';
-            closeGameForm();
-        }
-
-        function showAdminBanner(message, type) {
-            const banner = document.getElementById('adminStatusBanner');
-            banner.textContent = message;
-            banner.className = `admin-status-banner visible ${type}`;
-        }
-
-        function hideAdminBanner() {
-            document.getElementById('adminStatusBanner').classList.remove('visible');
-        }
-
-        /* ---------- Token de GitHub ---------- */
-        function saveGithubToken() {
-            const token = document.getElementById('githubTokenInput').value.trim();
-            if (!token) {
-                showAdminBanner('Pega un token válido antes de guardar.', 'error');
-                return;
-            }
-            localStorage.setItem('npg_github_token', token);
-            showAdminBanner('Token guardado en este navegador. Cargando catálogo desde GitHub...', 'info');
-            loadGamesFromGithub();
-        }
-
-        function clearGithubToken() {
-            localStorage.removeItem('npg_github_token');
-            document.getElementById('githubTokenInput').value = '';
-            showAdminBanner('Token eliminado de este navegador.', 'info');
-        }
-
-        function getGithubToken() {
-            return localStorage.getItem('npg_github_token') || '';
-        }
-
-        /* ---------- Leer games.json desde GitHub ---------- */
-        async function loadGamesFromGithub() {
-            const token = getGithubToken();
-            if (!token) return;
-
-            try {
-                const res = await fetch(GITHUB_API_CONTENTS_URL, {
-                    headers: {
-                        'Authorization': `Bearer ${token}`,
-                        'Accept': 'application/vnd.github+json'
-                    }
-                });
-
-                if (res.status === 404) {
-                    // games.json todavía no existe en el repo: se creará al guardar el primer cambio
-                    gamesLoadedFromGithub = true;
-                    githubFileSha = null;
-                    showAdminBanner('Aún no existe games.json en el repositorio. Se creará automáticamente cuando guardes el primer cambio.', 'info');
-                    renderAdminGameList();
-                    return;
-                }
-
-                if (!res.ok) {
-                    throw new Error(`GitHub respondió ${res.status}`);
-                }
-
-                const data = await res.json();
-                githubFileSha = data.sha;
-
-                const decoded = decodeURIComponent(escape(atob(data.content.replace(/\n/g, ''))));
-                const parsed = JSON.parse(decoded);
-
-                // Soporte formato nuevo {games, categories} y legacy array
-                if (Array.isArray(parsed)) {
-                    games = parsed;
-                } else {
-                    if (Array.isArray(parsed.games)) games = parsed.games;
-                    if (Array.isArray(parsed.categories)) categories = parsed.categories;
-                }
-                gamesLoadedFromGithub = true;
-                hideAdminBanner();
-                renderAdminGameList();
-                renderAdminCategoryList();
-                if (document.getElementById('catalog').style.display !== 'none') {
-                    loadGames();
-                }
-            } catch (err) {
-                console.error(err);
-                showAdminBanner('No se pudo leer games.json desde GitHub. Revisa que el token sea válido y tenga permiso "Contents: Read and write" sobre el repo.', 'error');
-            }
-        }
-
-        /* ---------- Guardar games.json en GitHub ---------- */
-        async function saveGamesToGithub(commitMessage) {
-            const token = getGithubToken();
-            if (!token) {
-                showAdminBanner('Necesitas guardar tu token de GitHub primero para poder guardar cambios.', 'error');
-                return false;
-            }
-
-            showAdminBanner('Guardando cambios en GitHub...', 'info');
-
-            try {
-                const payload = { games, categories };
-                const content = JSON.stringify(payload, null, 2);
-                const encodedContent = btoa(unescape(encodeURIComponent(content)));
-
-                const body = {
-                    message: commitMessage || 'Actualizar catálogo de juegos',
-                    content: encodedContent,
-                    branch: GITHUB_BRANCH
-                };
-                if (githubFileSha) body.sha = githubFileSha;
-
-                const res = await fetch(GITHUB_API_CONTENTS_URL.split('?')[0], {
-                    method: 'PUT',
-                    headers: {
-                        'Authorization': `Bearer ${token}`,
-                        'Accept': 'application/vnd.github+json',
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(body)
-                });
-
-                if (!res.ok) {
-                    const errData = await res.json().catch(() => ({}));
-                    throw new Error(errData.message || `GitHub respondió ${res.status}`);
-                }
-
-                const data = await res.json();
-                githubFileSha = data.content.sha;
-                gamesLoadedFromGithub = true;
-
-                showAdminBanner('Cambios guardados correctamente. Netlify desplegará la actualización en unos minutos.', 'success');
-                return true;
-            } catch (err) {
-                console.error(err);
-                showAdminBanner(`Error al guardar en GitHub: ${err.message}`, 'error');
-                return false;
-            }
-        }
-
-        /* ---------- Listado en el panel admin ---------- */
-        function renderAdminGameList() {
-            const container = document.getElementById('adminGameList');
-
-            if (games.length === 0) {
-                container.innerHTML = `<p style="color: var(--text-muted); font-size: 0.9rem;">No hay juegos todavía. Usa "+ Nuevo juego" para agregar el primero.</p>`;
-                return;
-            }
-
-            container.innerHTML = games.map(game => {
-                const isPublished = game.published !== false;
-                const thumb = game.imageUrl
-                    ? `<img src="${escapeHtml(game.imageUrl)}" alt="">`
-                    : (game.emoji || '🎮');
-
-                return `
-                    <div class="admin-game-row ${isPublished ? '' : 'unpublished'}">
-                        <div class="admin-game-thumb">${thumb}</div>
-                        <div class="admin-game-main">
-                            <h4>${escapeHtml(game.title)}
-                                <span class="admin-game-tag ${isPublished ? 'published' : 'unpublished'}">
-                                    ${isPublished ? 'PUBLICADO' : 'NO PUBLICADO'}
-                                </span>
-                            </h4>
-                            <div class="admin-game-meta">
-                                ${escapeHtml(game.category)} · ★ ${game.rating} · ${game.plays || 0} jugadas
-                                ${game.url ? `<br>${escapeHtml(game.url)}` : '<br>(sin URL de juego configurada)'}
-                            </div>
-                        </div>
-                        <div class="admin-game-actions">
-                            <button class="admin-icon-btn" onclick="openGameForm(${game.id})">✏️ Editar</button>
-                            <button class="admin-icon-btn ${isPublished ? 'toggle-on' : 'toggle-off'}" onclick="togglePublish(${game.id})">
-                                ${isPublished ? '🌐 Publicado' : '🔒 Privado'}
-                            </button>
-                            <button class="admin-icon-btn danger" onclick="deleteGame(${game.id})">🗑 Eliminar</button>
-                        </div>
-                    </div>
-                `;
-            }).join('');
-        }
-
-        /* ---------- Publicar / despublicar / eliminar ---------- */
-        async function togglePublish(id) {
-            const game = games.find(g => g.id === id);
-            if (!game) return;
-            game.published = game.published === false ? true : false;
-            renderAdminGameList();
-            await saveGamesToGithub(`${game.published ? 'Publicar' : 'Despublicar'} "${game.title}"`);
-        }
-
-        async function deleteGame(id) {
-            const game = games.find(g => g.id === id);
-            if (!game) return;
-            if (!confirm(`¿Eliminar "${game.title}" definitivamente del catálogo?`)) return;
-
-            games = games.filter(g => g.id !== id);
-            renderAdminGameList();
-            await saveGamesToGithub(`Eliminar "${game.title}" del catálogo`);
-        }
-
-        /* ---------- Conversión de link de GitHub a GitHub Pages ---------- */
-        function resolveGameUrl(rawLink) {
-            if (!rawLink) return null;
-            const link = rawLink.trim();
-
-            // detecta https://github.com/usuario/repo (con o sin / al final, /tree/..., /blob/...)
-            const match = link.match(/^https?:\/\/github\.com\/([^\/]+)\/([^\/]+)/i);
-            if (match) {
-                const user = match[1];
-                const repo = match[2].replace(/\.git$/i, '');
-                return `https://${user}.github.io/${repo}/`;
-            }
-
-            // si no es un link de github.com, se asume que ya es una URL publicada
-            return link;
-        }
-
-        /* ---------- Formulario crear/editar ---------- */
-        function toggleCoverInputs() {
-            const type = document.querySelector('input[name="coverType"]:checked').value;
-            document.getElementById('formEmoji').style.display = type === 'emoji' ? 'block' : 'none';
-            document.getElementById('formImageUrl').style.display = type === 'image' ? 'block' : 'none';
-        }
-
-        function openGameForm(id) {
-            const section = document.getElementById('adminFormSection');
-            section.style.display = 'block';
-            section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-
-            document.getElementById('formGameId').value = '';
-            document.getElementById('formTitle').value = '';
-            document.getElementById('formDescription').value = '';
-            document.getElementById('formCategory').value = 'arcade';
-            document.getElementById('formRating').value = '5';
-            document.getElementById('formEmoji').value = '🎮';
-            document.getElementById('formImageUrl').value = '';
-            document.getElementById('formRepoLink').value = '';
-            document.querySelector('input[name="coverType"][value="emoji"]').checked = true;
-            toggleCoverInputs();
-
-            if (id) {
-                const game = games.find(g => g.id === id);
-                if (game) {
-                    document.getElementById('adminFormTitle').textContent = `Editando: ${game.title}`;
-                    document.getElementById('formGameId').value = game.id;
-                    document.getElementById('formTitle').value = game.title;
-                    document.getElementById('formDescription').value = game.description;
-                    document.getElementById('formCategory').value = game.category;
-                    document.getElementById('formRating').value = game.rating;
-                    document.getElementById('formRepoLink').value = game.url || '';
-
-                    if (game.imageUrl) {
-                        document.querySelector('input[name="coverType"][value="image"]').checked = true;
-                        document.getElementById('formImageUrl').value = game.imageUrl;
-                    } else {
-                        document.getElementById('formEmoji').value = game.emoji || '🎮';
-                    }
-                    toggleCoverInputs();
-                }
-            } else {
-                document.getElementById('adminFormTitle').textContent = 'Nuevo juego';
-            }
-        }
-
-        function closeGameForm() {
-            document.getElementById('adminFormSection').style.display = 'none';
-        }
-
-        async function saveGameForm() {
-            const idValue = document.getElementById('formGameId').value;
-            const title = document.getElementById('formTitle').value.trim();
-            const description = document.getElementById('formDescription').value.trim();
-            const category = document.getElementById('formCategory').value;
-            const rating = parseFloat(document.getElementById('formRating').value) || 0;
-            const coverType = document.querySelector('input[name="coverType"]:checked').value;
-            const emoji = document.getElementById('formEmoji').value.trim();
-            const imageUrl = document.getElementById('formImageUrl').value.trim();
-            const repoLink = document.getElementById('formRepoLink').value.trim();
-
-            if (!title) {
-                showAdminBanner('El título del juego es obligatorio.', 'error');
-                return;
-            }
-
-            const resolvedUrl = resolveGameUrl(repoLink);
-
-            if (idValue) {
-                const game = games.find(g => g.id === parseInt(idValue));
-                if (game) {
-                    game.title = title;
-                    game.description = description;
-                    game.category = category;
-                    game.rating = rating;
-                    game.emoji = coverType === 'emoji' ? (emoji || '🎮') : '';
-                    game.imageUrl = coverType === 'image' ? imageUrl : '';
-                    game.url = resolvedUrl;
-                }
-            } else {
-                const newId = games.length > 0 ? Math.max(...games.map(g => g.id)) + 1 : 1;
-                games.push({
-                    id: newId,
-                    title,
-                    description,
-                    category,
-                    emoji: coverType === 'emoji' ? (emoji || '🎮') : '',
-                    imageUrl: coverType === 'image' ? imageUrl : '',
-                    url: resolvedUrl,
-                    published: true,
-                    rating,
-                    plays: 0
-                });
-            }
-
-            closeGameForm();
-            renderAdminGameList();
-            await saveGamesToGithub(`${idValue ? 'Editar' : 'Agregar'} juego "${title}"`);
-        }
-
-        /* ==========================================================
-           GESTIÓN DE CATEGORÍAS (panel admin)
-           ========================================================== */
-
-        function renderAdminCategoryList() {
-            const container = document.getElementById('adminCategoryList');
-            if (!container) return;
-
-            if (categories.length === 0) {
-                container.innerHTML = '<p style="color:var(--text-muted);font-size:0.85rem;">No hay categorías. Agrega una abajo.</p>';
-                return;
-            }
-
-            container.innerHTML = categories.map((cat, idx) => `
-                <div class="admin-cat-tag ${cat.active === false ? 'inactive' : ''}">
-                    <span
-                        class="admin-cat-name"
-                        contenteditable="true"
-                        data-idx="${idx}"
-                        onblur="renameCategoryAt(${idx}, this.textContent.trim())"
-                        onkeydown="if(event.key==='Enter'){event.preventDefault();this.blur();}"
-                        title="Doble clic para renombrar"
-                    >${escapeHtml(cat.name)}</span>
-                    <button class="admin-cat-btn toggle" onclick="toggleCategoryAt(${idx})" title="${cat.active === false ? 'Activar' : 'Desactivar'}">
-                        ${cat.active === false ? '○' : '●'}
-                    </button>
-                    <button class="admin-cat-btn" onclick="deleteCategoryAt(${idx})" title="Eliminar">✕</button>
-                </div>
-            `).join('');
-
-            // También actualizar el select de categoría en el formulario de juego
-            const sel = document.getElementById('formCategory');
-            if (sel) {
-                const current = sel.value;
-                sel.innerHTML = categories
-                    .filter(c => c.active !== false)
-                    .map(c => `<option value="${escapeHtml(c.id)}">${escapeHtml(c.name)}</option>`)
-                    .join('');
-                if (current) sel.value = current;
-            }
-        }
-
-        function addCategory() {
-            const input = document.getElementById('newCategoryInput');
-            const name = input.value.trim();
-            if (!name) return;
-
-            // Generar id: minúsculas, sin espacios
-            const id = name.toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-');
-
-            if (categories.find(c => c.id === id)) {
-                showAdminBanner('Ya existe una categoría con ese nombre.', 'error');
-                return;
-            }
-
-            categories.push({ id, name, active: true });
-            input.value = '';
-            renderAdminCategoryList();
-            saveGamesToGithub(`Agregar categoría "${name}"`);
-        }
-
-        function renameCategoryAt(idx, newName) {
-            if (!newName || !categories[idx]) return;
-            if (categories[idx].name === newName) return;
-            const old = categories[idx].name;
-            categories[idx].name = newName;
-            renderAdminCategoryList();
-            saveGamesToGithub(`Renombrar categoría "${old}" → "${newName}"`);
-        }
-
-        function toggleCategoryAt(idx) {
-            if (!categories[idx]) return;
-            categories[idx].active = categories[idx].active === false ? true : false;
-            renderAdminCategoryList();
-            saveGamesToGithub(`${categories[idx].active ? 'Activar' : 'Desactivar'} categoría "${categories[idx].name}"`);
-        }
-
-        function deleteCategoryAt(idx) {
-            const cat = categories[idx];
-            if (!cat) return;
-            const inUse = games.some(g => g.category === cat.id);
-            if (inUse && !confirm(`La categoría "${cat.name}" tiene juegos asignados. Si la eliminas seguirán existiendo pero sin categoría visible. ¿Continuar?`)) return;
-            if (!inUse && !confirm(`¿Eliminar la categoría "${cat.name}"?`)) return;
-            categories.splice(idx, 1);
-            renderAdminCategoryList();
-            saveGamesToGithub(`Eliminar categoría "${cat.name}"`);
-        }
-
-        /* ==========================================================
-           TOGGLE DE BARRA DEL REPRODUCTOR
-           ========================================================== */
-        function togglePlayerBar() {
-            const bar = document.getElementById('playerBar');
-            const btn = document.getElementById('playerShowBarBtn');
-            const isCollapsed = bar.classList.contains('bar-collapsed');
-
-            if (isCollapsed) {
-                bar.classList.remove('bar-collapsed');
-                btn.classList.remove('visible');
-            } else {
-                bar.classList.add('bar-collapsed');
-                btn.classList.add('visible');
-            }
-        }
-
-        // Auto-colapsar barra en landscape móvil al rotar
-        window.addEventListener('orientationchange', () => {
-            setTimeout(() => {
-                const bar = document.getElementById('playerBar');
-                if (!bar) return;
-                const isLandscape = window.innerWidth > window.innerHeight;
-                const isMobile = window.innerWidth <= 768;
-                const playerOpen = document.getElementById('playerOverlay').classList.contains('active');
-
-                if (playerOpen && isLandscape && isMobile) {
-                    bar.classList.add('bar-collapsed');
-                    document.getElementById('playerShowBarBtn').classList.add('visible');
-                } else if (!isLandscape) {
-                    bar.classList.remove('bar-collapsed');
-                    document.getElementById('playerShowBarBtn').classList.remove('visible');
-                }
-            }, 300);
         });
 
-        // INIT
-        applyTheme(currentTheme);
-        showHome();
-        loadGamesPublic(); // carga el catálogo real en segundo plano al arrancar
+        playGameBtn.addEventListener('click', () => {
+            if (currentGame) {
+                playGame(currentGame);
+                gameModal.classList.remove('active');
+            }
+        });
+
+        // ============================================
+        // REPRODUCTOR DE JUEGO
+        // ============================================
+        const playerOverlay = document.getElementById('playerOverlay');
+        const playerBackBtn = document.getElementById('playerBackBtn');
+        const playerFullscreenBtn = document.getElementById('playerFullscreenBtn');
+        const playerTitle = document.getElementById('playerTitle');
+        const gameFrame = document.getElementById('gameFrame');
+        const playerBar = document.getElementById('playerBar');
+        const playerShowBarBtn = document.getElementById('playerShowBarBtn');
+        const playerStatus = document.getElementById('playerStatus');
+
+        function playGame(game) {
+            currentGame = game;
+            playerTitle.textContent = game.title;
+            playerOverlay.classList.add('active');
+            gameFrame.src = game.url;
+            gameFrame.style.display = 'block';
+            playerStatus.classList.add('hidden');
+        }
+
+        playerBackBtn.addEventListener('click', () => {
+            playerOverlay.classList.remove('active');
+            gameFrame.src = '';
+        });
+
+        playerFullscreenBtn.addEventListener('click', () => {
+            if (gameFrame.requestFullscreen) {
+                gameFrame.requestFullscreen();
+            }
+        });
+
+        playerShowBarBtn.addEventListener('click', () => {
+            playerBar.classList.remove('bar-collapsed');
+            playerShowBarBtn.classList.remove('visible');
+        });
+
+        // Mostrar botón flotante al pasar el ratón en landscape móvil
+        playerOverlay.addEventListener('mousemove', () => {
+            if (window.matchMedia('(max-height: 500px) and (orientation: landscape)').matches) {
+                playerBar.classList.remove('bar-collapsed');
+                playerShowBarBtn.classList.remove('visible');
+                clearTimeout(playerOverlay.autoHideTimer);
+                playerOverlay.autoHideTimer = setTimeout(() => {
+                    playerBar.classList.add('bar-collapsed');
+                    playerShowBarBtn.classList.add('visible');
+                }, 3000);
+            }
+        });
+
+        // ============================================
+        // INICIALIZACIÓN
+        // ============================================
+        renderGames();
     </script>
 </body>
 </html>
